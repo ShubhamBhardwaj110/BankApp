@@ -1,6 +1,10 @@
 class Account:
-    def __init__(self):
-        pass
+    def __init__(self,accountNumber, accountHolderName, currentBalance):
+        self.currentBalance = currentBalance
+        self.rateOfInterest = float(2.5)
+        self.accountNumber = accountNumber
+        self.accountHolderName = accountHolderName
+
 
 
     def getAccountNumber(self):
