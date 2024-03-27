@@ -1,17 +1,16 @@
 import account
 
-class ChequingAccount(account.Account):
+class SavingsAccount(account.Account):
     def __init__(self, accountNumber, accountHolderName, currentBalance):
         super().__init__(accountNumber, accountHolderName, currentBalance)
-        self.overdraftlimit = -5000
+        self.minimumBalance = -1000
 
 
-    def getoverdraftLimit(self):
-         return self.overdraftlimit
+    def getMinimumBalance(self):
+         return self.minimumBalance
     
-    def withdraw(self,amount):
-        if self.currentBalance - amount >= self.overdraftlimit:
-            self.currentBalance -= amount
-        else:
+    def withdraw(self,withdrawAmount):
+        if withdrawAmount >= self.currentBalance or withdrawAmount> self.minimumBalance:
             raise Exception("Please enter the valid amount")
+        self.currentBalance = self.currentBalance - withdrawAmount
         return  self.currentBalance 
