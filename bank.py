@@ -18,14 +18,14 @@ class Bank:
 
     def openAccount(self):
         while True:
-            print("Welcome! Please select an option to continue")
+            print("Welcome! In order to create an account, please select an option to continue")
             print("1. Open Savings Account")
             print("2. Open Chequing Account")
-            print("3. Exit")
+            print("3. Exit\n")
             choice = int(input("Enter the choice: "))
             if choice ==1:
                 print("************WELCOME TO YOUR SAVINGS ACCOUNT************")
-                accountNumber = int(input("Please enter your AccountNumber: "))
+                accountNumber = int(input("Please enter your Account Number: "))
                 accountHolderName = input("Please enter your name: ")
                 amount = int(input("Pleae enter the amuount: $"))
                 savingsAccountObj1= savingsAccount.SavingsAccount(accountNumber,accountHolderName,amount)
@@ -50,7 +50,12 @@ class Bank:
                 return self.accounts
 
 
-            
-                    
-    def searchAccount(self):
-        pass
+
+
+    def searchAccount(self,accountNumber):
+        for accountNumberobj in self.accounts:
+            if accountNumberobj.getAccountNumber() == accountNumber:  
+                print(f"AccountNumber: {accountNumber}")
+                return accountNumberobj
+        print("Account does not exist")
+        return None
